@@ -52,9 +52,20 @@ To correct the distortion, I use "cv2.undistort" command and the result is shown
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-First, I explore each RGB and HLS color channel to see whether which channel can generate distinct clear lane line.
+First, I explore each RGB and HLS color channel to see whether which channel can generate distinct clear lane line. Among these channels, S channel can provide the best raw lane line detection. Then, I narrow down the potential color channels that will be used in this pipeline, including S,L,R,G,gray channels.
 ![alt text][image3]
 
+To deep dive into S and L channel, I apply the color threshold and the output binary results in S (threshold=(100,255)) and L (threshold=(100,255)) channel are shown here:
+![alt text][image4]
+
+Likewise, applying the threshold of (170,255) in both R and G channel gives the binary image results like this:
+![alt text][image5]
+
+For gray channel, let's apply the sobel operator using x-orient magnitude, absolute magnitude, and direction. The result is shown below. The binary absolute sobel give the best result in this section.
+![alt text][image6]
+
+To combine all color and gradient technique in this section, I create the "process_color_and_gradient" function. After several experiment of finding the right combination between binary threshold and binary sobel result, I use S&L binary and Gray binary absolute, described by "Combined_binary[(S_binary & L_binary) | (Gray_binary_abs == 1)] = 1". The results by applying this function is shown here:
+![alt text][image7]
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
