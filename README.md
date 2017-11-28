@@ -91,13 +91,13 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-To find a lane line, I use the warped image. Then I take a histogram of the bottom half of the image and find the histogram peak of the left and right halves of the histogram. Then, 9 sliding windows with margin of 100 and min number of pixel of 50 are applied to identify nonzero x-y pixels used for 2nd order polynomial fitting to determine the curve line. The result is shown below:
+To find a lane line, I use the warped image. Then I take a histogram of the bottom half of the image and find the histogram peak of the left and right halves of the histogram. Then, 9 sliding windows with margin of 100 and min number of pixel of 50 are applied to identify nonzero x-y pixels used for 2nd order polynomial fitting to determine the curve line. The result is shown below. To include all these step in this section, I create the "lane_line_process" function.
 
-![alt text][image9]
+![alt text][image10]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+The "cal_radius_offset" function is introducted here. Using the 2nd order polynomial fit (y-fit = Ay^2 + By + C), the radius of curvature is calculated by R = [1 + (2Ay+B)^2]^1.5/|2*A|
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
