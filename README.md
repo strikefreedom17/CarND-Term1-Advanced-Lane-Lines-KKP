@@ -53,50 +53,41 @@ To correct the distortion, I use "cv2.undistort" command and the result is shown
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 First, I explore each RGB and HLS color channel to see whether which channel can generate distinct clear lane line. Among these channels, S channel can provide the best raw lane line detection. Then, I narrow down the potential color channels that will be used in this pipeline, including S,L,R,G,gray channels.
+
 ![alt text][image3]
 
 To deep dive into S and L channel, I apply the color threshold and the output binary results in S (threshold=(100,255)) and L (threshold=(100,255)) channel are shown here:
+
 ![alt text][image4]
 
 Likewise, applying the threshold of (170,255) in both R and G channel gives the binary image results like this:
+
 ![alt text][image5]
 
 For gray channel, let's apply the sobel operator using x-orient magnitude, absolute magnitude, and direction. The result is shown below. The binary absolute sobel give the best result in this section.
+
 ![alt text][image6]
 
 To combine all color and gradient technique in this section, I create the "process_color_and_gradient" function. After several experiment of finding the right combination between binary threshold and binary sobel result, I use S&L binary and Gray binary absolute, described by "Combined_binary[(S_binary & L_binary) | (Gray_binary_abs == 1)] = 1". The results by applying this function is shown here:
+
 ![alt text][image7]
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warper()`, described in Step4: Perspective Transformation section.  The `warper()` function takes as inputs an image (`img`). The source (`src`) and destination (`dst`) points are choose manually by the following manner:
 
-```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
-```
-
-This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 233, 713      | 300, 720      | 
+| 560, 478      | 300, 1        |
+| 729, 478      | 900, 1        |
+| 1080, 718     | 900, 720      |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+![alt text][image8]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
