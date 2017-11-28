@@ -91,9 +91,9 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+To find a lane line, I use the warped image. Then I take a histogram of the bottom half of the image and find the histogram peak of the left and right halves of the histogram. Then, 9 sliding windows with margin of 100 and min number of pixel of 50 are applied to identify nonzero x-y pixels used for 2nd order polynomial fitting to determine the curve line. The result is shown below:
 
-![alt text][image5]
+![alt text][image9]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
