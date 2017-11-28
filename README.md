@@ -113,7 +113,7 @@ In conclusion, I put all steps together and define "lane_detection_pipeline".  H
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video 
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_output.mp4)
 
 ---
 
@@ -121,4 +121,6 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+There maybe some frame that the lane detection pipeline highlight the wrong lane area. This may cause by the unsuccessfully clear distinguish of the lane line in color and threshold section. Better threshold tuning and potential other color and gradient threshold combination may give more robust result. 
+
+
