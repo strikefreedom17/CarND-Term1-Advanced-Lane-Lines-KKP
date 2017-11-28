@@ -99,17 +99,19 @@ To find a lane line, I use the warped image. Then I take a histogram of the bott
 
 The "cal_radius_offset" function is introducted here. Using the 2nd order polynomial fit (y-fit = Ay^2 + By + C), the radius of curvature is calculated by R = [1 + (2Ay+B)^2]^1.5/|2*A|
 
+The position of the vehicle w.r.t the center is defined as offset which is determined by the difference between image center and the average position of left and right lane.
+
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+In conclusion, I put all steps together and define "lane_detection_pipeline".  Here is an example of my result on a test image:
 
-![alt text][image6]
+![alt text][image12]
 
 ---
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video 
 
 Here's a [link to my video result](./project_video.mp4)
 
