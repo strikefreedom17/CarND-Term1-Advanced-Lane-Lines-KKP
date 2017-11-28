@@ -13,23 +13,24 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./pic_writeup/pic1_chessboard_cal.png "Undistorted"
-[image2]: ./pic_writeup/pic1_chessboard_cal.png "Road Transformed"
-[image3]: ./pic_writeup/pic1_chessboard_cal.png "Binary Example"
-[image4]: ./pic_writeup/pic1_chessboard_cal.png "Warp Example"
-[image5]: ./pic_writeup/pic1_chessboard_cal.png "Fit Visual"
-[image6]: ./pic_writeup/pic1_chessboard_cal.png "Output"
+[image1]:  ./pic_writeup/pic1_chessboard_cal.png        "Camera Calibration"
+[image2]:  ./pic_writeup/pic2_dis_vs_undist.png         "Distortion Correction"
+[image3]:  ./pic_writeup/pic3_color_channels.png        "Explore Color Channel"
+[image4]:  ./pic_writeup/pic4_S_L_threshold.png         "S-L Threshold"
+[image5]:  ./pic_writeup/pic5_R_G_threshold.png         "R-G Threshold"
+[image6]:  ./pic_writeup/pic6_gray_threshold.png        "Gray Sobel Threshold"
+[image7]:  ./pic_writeup/pic7_color_and_threshold.png   "Color and Threshold Process"
+[image8]:  ./pic_writeup/pic8_warped_img.png            "Warped Image"
+[image9]:  ./pic_writeup/pic9_hist.png                  "Histogram X"
+[image10]: ./pic_writeup/pic10_window.png               "Lane Line Curve Fitting (Window)"
+[image11]: ./pic_writeup/pic11_window2.png              "Lane Line Curve Fitting (Filled-In Window)"
+[image12]: ./pic_writeup/pic12_org_vs_final.png         "Original vs Final Image"
+
 [video1]: ./project_video_output.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
----
-
-### Writeup / README
-
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
 You're reading it!
 
