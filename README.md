@@ -38,12 +38,9 @@ The goals / steps of this project are the following:
 
 The code for this step is contained in the first code cell of the IPython notebook located in "Main_Advanced_Lane_Finding.ipynb".  
 
-I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
+Note, the calibration chessboard image files include 9x6 corners, unlike the 8x6 corners used in the lesson. First, the object points and imgpoints are introduced as follows. The object points are the (x,y,z) coordinates of the chessboard corners in the world where the imgpoints are the (x,y) coordinateds of corresponding corner on the image plane, assuming z=0. I use the command "cv2.findChessboardCorners" to find all corners in the image plane. Then, append objp to objpoints, and corners to imgpoints. Finally for this step, I use "cv2.calibrateCamera" to calculate the camera calibration mapping. 
 
-I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
-
-
-
+cv2.drawChessboardCorners will draw each corner points on the image plane like this:
 ![alt text][image1]
 
 ### Pipeline (single images)
